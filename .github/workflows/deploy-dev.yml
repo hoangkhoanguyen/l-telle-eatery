@@ -7,7 +7,7 @@ on:
         branches: ["deploy/dev/*"]
 
 jobs:
-    build-admin:
+    build-dev:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
