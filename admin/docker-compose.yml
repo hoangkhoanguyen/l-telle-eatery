@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  nextjs-admin-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
+    ports:
+      - "3030:3000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    volumes:
+      - ./public:/app/public:ro
+    networks:
+      - admin-network
+
+networks:
+  admin-network:
+    driver: bridge 
