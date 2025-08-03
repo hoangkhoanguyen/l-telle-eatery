@@ -34,5 +34,5 @@ jobs:
               with:
                   context: ./
                   push: true
-                  tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.PROJECT_NAME }}-${{ steps.extract.outputs.app_name }}:dev
+                  tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.PROJECT_NAME }}-user:dev
                   file: ./apps/${{ steps.extract.outputs.app_name }}/Dockerfile
