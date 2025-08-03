@@ -32,7 +32,7 @@ jobs:
             - name: build and push
               uses: docker/build-push-action@v5
               with:
-                  context: ./
+                  context: ./${{ steps.extract.outputs.app_name }}
                   push: true
                   tags: ${{ secrets.DOCKER_USERNAME }}/${{ secrets.PROJECT_NAME }}-${{ steps.extract.outputs.app_name }}:dev
                   file: ./${{ steps.extract.outputs.app_name }}/Dockerfile
