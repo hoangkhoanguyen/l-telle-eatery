@@ -1,3 +1,4 @@
+import { classNameUtils } from "@/lib/utils/class";
 import React, { ReactNode } from "react";
 
 interface ButtonProps {
@@ -37,11 +38,18 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`inline-flex items-center justify-center font-medium gap-2 rounded-lg transition ${className} ${
-        sizeClasses[size]
-      } ${variantClasses[variant]} ${
-        disabled ? "cursor-not-allowed opacity-50" : ""
-      }`}
+      // className={`inline-flex items-center justify-center font-medium gap-2 rounded-lg transition ${className} ${
+      //   sizeClasses[size]
+      // } ${variantClasses[variant]} ${
+      //   disabled ? "cursor-not-allowed opacity-50" : ""
+      // }`}
+      className={classNameUtils.cn(
+        "inline-flex items-center justify-center font-medium gap-2 rounded-lg transition",
+        sizeClasses[size],
+        variantClasses[variant],
+        disabled ? "cursor-not-allowed opacity-50" : "",
+        className
+      )}
       onClick={onClick}
       disabled={disabled}
     >
